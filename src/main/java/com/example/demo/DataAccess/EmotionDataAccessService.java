@@ -21,28 +21,44 @@ public class EmotionDataAccessService implements IEmotionDataAccessService {
 
     @Override
     public List<Emotion> RetrieveEmotions() {
-        String query = "SELECT * FROM Emotions";
+        String query = "SELECT * FROM Emotion";
         List<Emotion> emotionList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(Emotion.class));
         return emotionList;
     }
 
     @Override
     public Emotion SearchEmotion(int id) {
-        return null;
+        String query = "SELECT * FROM Emotion WHERE EmotionID = " + String.valueOf(id);
+        Emotion emotion = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(Emotion.class)).stream().findFirst().orElse(null);
+        return emotion;
     }
 
     @Override
-    public void CreateEmotion(Emotion emotion) {
-
+    public void CreateEmotion(String emotionName, int emotionCategoryID, int emotionDescriptionID) {
+        String query = String.format("INSERT INTO Emotion ([Name], EmotionCategoryID, DescriptionID) VALUES ('%s', %s, %s)",
+                emotionName,
+                emotionCategoryID,
+                emotionDescriptionID);
+        jdbcTemplate.update(query);
     }
 
     @Override
-    public void UpdateEmotion(Emotion emotion) {
-
+    public void UpdateEmotion(int emotionId, String emotionName, int emotionCategoryID, int emotionDescriptionID) {
+        String query = String.format("UPDATE Emotion SET " +
+                        "[Name] = '%s'," +
+                        "EmotionCategoryID = %s," +
+                        "DescriptionID = %s " +
+                        "where emotionID = %s",
+                emotionName,
+                emotionCategoryID,
+                emotionDescriptionID,
+                emotionId);
+        jdbcTemplate.update(query);
     }
 
     @Override
     public void DeleteEmotion(int id) {
-
+        String query = String.format("DELETE FROM Emotion WHERE EmotionID = %s", id);
+        jdbcTemplate.update(query);
     }
 }

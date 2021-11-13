@@ -6,8 +6,12 @@ import java.util.List;
 
 public interface IEmotionBusinessLogicService {
     List<Emotion> RetrieveEmotions();
+
     Emotion SearchEmotion(int id);
-    void CreateEmotion(String emotionName, int idCategory);
-    void UpdateEmotion(int id, String emotionName, int idCategory);
+
+    void CreateEmotion(String emotionName, int emotionCategoryID, int emotionDescriptionID);
+
+    void UpdateEmotion(int id, String emotionName, int emotionCategoryID, int emotionDescriptionID);
+
     void DeleteEmotion(int id);
 }
