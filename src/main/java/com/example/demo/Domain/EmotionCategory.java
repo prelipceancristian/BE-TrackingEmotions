@@ -1,20 +1,20 @@
 package com.example.demo.Domain;
 
 public class EmotionCategory {
-        int EmotionCategoryID;
-        String Name;
-        int ValenceID;
-        int DescriptionID;
+    int EmotionCategoryID;
+    String Name;
+    int ValenceID;
+    int DescriptionID;
 
-        @Override
-        public String toString() {
-            return "EmotionCategory{" +
-                    "EmotionCategoryID=" + EmotionCategoryID +
-                    ", Name='" + Name + '\'' +
-                    ", ValenceID=" + ValenceID +
-                    ", DescriptionID=" + DescriptionID +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "EmotionCategory{" +
+                "EmotionCategoryID=" + EmotionCategoryID +
+                ", Name='" + Name + '\'' +
+                ", ValenceID=" + ValenceID +
+                ", DescriptionID=" + DescriptionID +
+                '}';
+    }
 
     public int getEmotionCategoryID() {
         return EmotionCategoryID;
