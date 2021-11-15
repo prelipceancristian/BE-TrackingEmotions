@@ -26,21 +26,23 @@ public class EmotionBusinessLogicService implements IEmotionBusinessLogicService
 
     @Override
     public Emotion SearchEmotion(int id) {
-        return null;
+        return emotionDataAccessService.SearchEmotion(id);
     }
 
     @Override
-    public void CreateEmotion(String emotionName, int idCategory) {
-
+    public void CreateEmotion(String emotionName, int emotionCategoryID, int emotionDescriptionID) {
+        //TODO: check if emotionCategoryID and emotionDescriptionID are valid
+        emotionDataAccessService.CreateEmotion(emotionName, emotionCategoryID, emotionDescriptionID);
     }
 
     @Override
-    public void UpdateEmotion(int id, String emotionName, int idCategory) {
-
+    public void UpdateEmotion(int id, String emotionName, int emotionCategeoryID, int emotionDescriptionID) {
+        //TODO: check if ids are valid
+        emotionDataAccessService.UpdateEmotion(id, emotionName, emotionCategeoryID, emotionDescriptionID);
     }
 
     @Override
     public void DeleteEmotion(int id) {
-
+        emotionDataAccessService.DeleteEmotion(id);
     }
 }

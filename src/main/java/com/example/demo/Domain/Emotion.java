@@ -1,40 +1,50 @@
 package com.example.demo.Domain;
 
 public class Emotion {
-    int idEmotion;
-    String nameEmotion;
-    int idCategory;
+    int EmotionID;
+    String Name;
+    int EmotionCategoryID;
+    int DescriptionID;
 
     @Override
     public String toString() {
         return "Emotion{" +
-                "idEmotion=" + idEmotion +
-                ", nameEmotion='" + nameEmotion + '\'' +
-                ", idCategory=" + idCategory +
+                "EmotionID=" + EmotionID +
+                ", Name='" + Name + '\'' +
+                ", EmotionCategoryID=" + EmotionCategoryID +
+                ", DescriptionID=" + DescriptionID +
                 '}';
     }
 
-    public int getIdEmotion() {
-        return idEmotion;
+    public int getEmotionID() {
+        return EmotionID;
     }
 
-    public void setIdEmotion(int idEmotion) {
-        this.idEmotion = idEmotion;
+    public void setEmotionID(int emotionID) {
+        EmotionID = emotionID;
     }
 
-    public String getNameEmotion() {
-        return nameEmotion;
+    public String getName() {
+        return Name;
     }
 
-    public void setNameEmotion(String nameEmotion) {
-        this.nameEmotion = nameEmotion;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public int getIdCategory() {
-        return idCategory;
+    public int getEmotionCategoryID() {
+        return EmotionCategoryID;
     }
 
-    public void setIdCategory(int idCategory) {
-        this.idCategory = idCategory;
+    public void setEmotionCategoryID(int emotionCategoryID) {
+        EmotionCategoryID = emotionCategoryID;
+    }
+
+    public int getDescriptionID() {
+        return DescriptionID;
+    }
+
+    public void setDescriptionID(int descriptionID) {
+        DescriptionID = descriptionID;
     }
 }
