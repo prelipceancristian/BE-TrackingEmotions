@@ -2,47 +2,49 @@ package com.example.demo.Domain;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.util.Date;
 public class User {
 
-    private int userId;
-    private String name;
-    private String surname;
-    private String email;
-    private int age;
-    private String username;
-    private String password;
-    private String gender;
+    private int UserId;
+    private String FirstName;
+    private String LastName;
+    private Date BirthDate;
+    private String Username;
+    private String Password;
+    private String Gender;
+    private String Email;
 
-    public int getUserId() { return userId; } //getter
-    public String getName() { return name; }
-    public String getSurname() { return surname; }
-    public String getEmail() { return email; }
-    public int getAge() { return age; }
-    public String getUsername(){ return username; }
-    public String getPassword(){ return password; }
-    public String getGender(){ return gender; }
 
-    public void setUserId(int userId) { this.userId = userId; } //setter
-    public void setName(String name) { this.name = name; }
-    public void setSurname(String surname) { this.surname = surname; }
-    public void setEmail(String email) { this.email = email; }
-    public void setAge(int age) { this.age = age; }
-    public void setUsername(String username) { this.username = username; }
-    public void setPassword(String password) { this.password = password; }
-    public void setGender(String gender) { this.gender = gender; }
+    public int getUserId() { return UserId; } //getter
+    public String getFirstName() { return FirstName; }
+    public String getLastName() { return LastName; }
+    public Date getBirthDate() { return BirthDate; }
+    public String getUsername(){ return Username; }
+    public String getPassword(){ return Password; }
+    public String getGender(){ return Gender; }
+    public String getEmail(){ return Email; }
+
+
+    public void setUserId(int UserId) { this.UserId = UserId; } //setter
+    public void setLastName(String LastName) { this.LastName = LastName; }
+    public void setFirstName(String FirstName) { this.FirstName = FirstName; }
+    public void setEmail(String Email) { this.Email = Email; }
+    public void setBirthDate(Date BirthDate) { this.BirthDate = BirthDate; }
+    public void setUsername(String Username) { this.Username = Username; }
+    public void setPassword(String Password) { this.Password = Password; }
+    public void setGender(String Gender) { this.Gender = Gender; }
 
     @Override
     public String toString() {
         return "User{" +
-                "userId='" + userId + '\'' +
-                ", nameUser='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", emailUser='" + email + '\'' +
-                ", ageUser=" + age +
-                ", username='" + username + '\'' +
-                ", passwordUser='" + password + '\'' +
-                ", genderUser='" + gender + '\'' +
+                "UserId='" + UserId +
+                ", FirstNameUser='" + FirstName + '\'' +
+                ", LastNameUser='" + LastName + '\'' +
+                ", BirthDateUser='" + BirthDate + '\'' +
+                ", Username=" + Username +
+                ", PasswordUser='" + Password + '\'' +
+                ", GenderUser='" + Gender + '\'' +
+                ", EmailUser='" + Email + '\'' +
                 '}';
     }
 
