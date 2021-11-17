@@ -1,4 +1,5 @@
 package com.example.demo.DataAccess;
+import com.example.demo.Domain.Emotion;
 import com.example.demo.Domain.EmotionCategory;
 import com.example.demo.Interfaces.DataAccess.IEmotionCategoryDataAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,28 +21,43 @@ public class EmotionCategoryDataAccessService implements IEmotionCategoryDataAcc
 
     @Override
     public List<EmotionCategory> RetrieveEmotionCategory() {
-        String query = "SELECT * FROM EmotionCategory";
-        List<EmotionCategory> emotionCategoryList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionCategory.class));
-        return emotionCategoryList;
+            String query = "SELECT * FROM EmotionCategory";
+            List<EmotionCategory> emotionCategoryList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionCategory.class));
+            return emotionCategoryList;
     }
 
     @Override
     public EmotionCategory SearchEmotionCategory(int id) {
-        return null;
+        String query = "SELECT * FROM EmotionCategory WHERE EmotionCategoryID="+ String.valueOf(id);
+        EmotionCategory emotionCategory = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionCategory.class)).stream().findFirst().orElse(null);
+        return emotionCategory;
     }
 
     @Override
     public void CreateEmotionCategory(String emotionCategoryName, int ValenceID, int emotionDescriptionID) {
-
+        String query = String.format("INSERT INTO EmotionCategory ([Name], ValenceID, DescriptionID) VALUES ('%s', %s, %s)",
+                emotionCategoryName,
+                ValenceID,
+                emotionDescriptionID);
+        jdbcTemplate.update(query);
     }
 
     @Override
     public void UpdateEmotionCategory(int emotionCategoryID, String emotionCategoryName, int ValenceID, int emotionDescriptionID) {
-
+        String query = String.format("UPDATE EmotionCategory SET " +
+                        "[Name] = '%s'," +
+                        "ValenceID = %s," +
+                        "DescriptionID = %s " +
+                        "where emotionCategoryID = %s",
+                emotionCategoryName,
+                ValenceID,
+                emotionDescriptionID,
+                emotionCategoryID);
+        jdbcTemplate.update(query);
     }
 
     @Override
     public void DeleteEmotionCategory(int id) {
-
+        String query = String.format("DELETE FROM Category WHERE EmotionCategoryID = %s", id);
     }
 }

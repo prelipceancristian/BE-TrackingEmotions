@@ -14,4 +14,5 @@ public interface IEmotionCategoryDataAccessService {
     void UpdateEmotionCategory(int emotionCategoryID, String emotionCategoryName, int ValenceID, int emotionDescriptionID);
 
     void DeleteEmotionCategory(int id);
+
 }

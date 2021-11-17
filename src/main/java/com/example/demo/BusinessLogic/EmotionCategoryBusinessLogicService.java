@@ -27,21 +27,24 @@ public class EmotionCategoryBusinessLogicService implements IEmotionCategoryBusi
 
     @Override
     public EmotionCategory SearchEmotionCategory(int id) {
-        return null;
+        return emotionCategoryDataAccessService.SearchEmotionCategory(id);
     }
 
     @Override
     public void CreateEmotionCategory(String emotionCategoryName, int ValenceID, int emotionDescriptionID) {
-
+        //TODO: check if emotionCategoryID and ValenceID and emotionDescriptionID are valid
+        emotionCategoryDataAccessService.CreateEmotionCategory(emotionCategoryName, ValenceID, emotionDescriptionID);
     }
 
     @Override
     public void UpdateEmotionCategory(int id, String emotionCategoryName, int ValenceID, int emotionDescriptionID) {
+        //TODO: check if id, valenceid, emotiondescriptionid are valid
+        emotionCategoryDataAccessService.UpdateEmotionCategory(id, emotionCategoryName, ValenceID, emotionDescriptionID);
 
     }
 
     @Override
     public void DeleteEmotionCategory(int id) {
-
+        emotionCategoryDataAccessService.DeleteEmotionCategory(id);
     }
 }
