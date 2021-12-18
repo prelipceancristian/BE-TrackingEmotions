@@ -5,13 +5,13 @@ import com.example.demo.Domain.Description;
 import java.util.List;
 
 public interface IDescriptionDataAccessService {
-    List<Description> RetrieveDescription();
+    List<Description> RetrieveDescriptions();
 
-    Description SearchDescription(int id);
+    Description SearchDescription(int descriptionID);
 
-    void CreateDescription(int DescriptionID,String Text);
+    void CreateDescription(String text);
 
-    void UpdateDescription(int DescriptionID, String Text);
+    void UpdateDescription(int descriptionID, String text);
 
-    void DeleteDescription(int id);
+    void DeleteDescription(int descriptionID);
 }
