@@ -30,6 +30,7 @@ public class UserBusinessLogicService implements IUserBusinessLogicService{
     public User SearchUser(int id) {
         return UserDataAccessService.SearchUser(id);
     }
+
     @Override
     public void CreateUser(String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email) {
         //TODO: check if BirthDate is valid

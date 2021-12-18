@@ -40,7 +40,6 @@ public class EmotionCategoryBusinessLogicService implements IEmotionCategoryBusi
     public void UpdateEmotionCategory(int id, String emotionCategoryName, int ValenceID, int emotionDescriptionID) {
         //TODO: check if id, valenceid, emotiondescriptionid are valid
         emotionCategoryDataAccessService.UpdateEmotionCategory(id, emotionCategoryName, ValenceID, emotionDescriptionID);
-
     }
 
     @Override
