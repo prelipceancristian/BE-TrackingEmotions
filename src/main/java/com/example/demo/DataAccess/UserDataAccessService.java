@@ -34,7 +34,7 @@ public class UserDataAccessService implements IUserDataAccessService{
     }
 
     @Override
-    public void CreateUser(String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email) {
+    public void CreateUser(String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
         String query = String.format("INSERT INTO [dbo].[User] ([FirstName], [LastName], [BirthDate], [Username], [Password], [Gender], [Email]) VALUES ('%s', %s, %s, '%s', %s, %s, %s)",
                 FirstName,
                 LastName,
@@ -47,7 +47,7 @@ public class UserDataAccessService implements IUserDataAccessService{
     }
 
     @Override
-    public void UpdateUser(int UserID, String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email) {
+    public void UpdateUser(int UserID, String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
         String query = String.format("UPDATE User SET " +
                         "[FirstName] = '%s'," +
                         "[LastName] = %s," +

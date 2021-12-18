@@ -10,9 +10,9 @@ public interface IUserDataAccessService {
 
     User SearchUser(int id);
 
-    void CreateUser(String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email);
+    void CreateUser(String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email);
 
-    void UpdateUser(int UserID, String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email);
+    void UpdateUser(int UserID, String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email);
 
     void DeleteUser(int id);
 }

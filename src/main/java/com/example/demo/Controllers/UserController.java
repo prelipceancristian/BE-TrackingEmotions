@@ -28,12 +28,12 @@ public class UserController {
     }
 
     @PostMapping
-    public void CreateUser(@RequestParam String FirstName, @RequestParam String LastName, @RequestParam Date BirthDate, @RequestParam String Username, @RequestParam String Password, @RequestParam String Gender, @RequestParam String Email) {
+    public void CreateUser(@RequestParam String FirstName, @RequestParam String LastName, @RequestParam String BirthDate, @RequestParam String Username, @RequestParam String Password, @RequestParam String Gender, @RequestParam String Email) {
        UserBusinessLogicService.CreateUser(FirstName, LastName, BirthDate, Username, Password, Gender, Email);
     }
 
     @PutMapping
-    public void UpdateUser(@RequestParam int UserID, @RequestParam String FirstName, @RequestParam String LastName, @RequestParam Date BirthDate, @RequestParam String Username, @RequestParam String Password, @RequestParam String Gender, @RequestParam String Email) {
+    public void UpdateUser(@RequestParam int UserID, @RequestParam String FirstName, @RequestParam String LastName, @RequestParam String BirthDate, @RequestParam String Username, @RequestParam String Password, @RequestParam String Gender, @RequestParam String Email) {
         UserBusinessLogicService.UpdateUser(UserID, FirstName, LastName, BirthDate, Username, Password, Gender, Email);
     }
 

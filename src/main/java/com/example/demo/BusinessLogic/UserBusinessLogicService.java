@@ -32,13 +32,13 @@ public class UserBusinessLogicService implements IUserBusinessLogicService{
     }
 
     @Override
-    public void CreateUser(String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email) {
+    public void CreateUser(String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
         //TODO: check if BirthDate is valid
         UserDataAccessService.CreateUser(FirstName, LastName, BirthDate, Username, Password, Gender, Email);
     }
 
     @Override
-    public void UpdateUser(int Userid, String FirstName, String LastName, Date BirthDate, String Username, String Password, String Gender, String Email) {
+    public void UpdateUser(int Userid, String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
         //TODO: check if Userid and BirthDate are valid
         UserDataAccessService.UpdateUser(Userid, FirstName, LastName, BirthDate, Username,Password, Gender, Email);
     }
