@@ -59,5 +59,6 @@ public class EmotionCategoryDataAccessService implements IEmotionCategoryDataAcc
     @Override
     public void DeleteEmotionCategory(int id) {
         String query = String.format("DELETE FROM Category WHERE EmotionCategoryID = %s", id);
+        jdbcTemplate.update(query);
     }
 }
