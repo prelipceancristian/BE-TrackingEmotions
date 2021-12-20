@@ -15,4 +15,5 @@ public interface IEmotionCategoryDataAccessService {
 
     void DeleteEmotionCategory(int id);
 
+    List<EmotionCategory> RetrieveEmotionCategoriesForValence(int valence);
 }

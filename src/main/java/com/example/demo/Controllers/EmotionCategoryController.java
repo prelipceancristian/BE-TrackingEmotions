@@ -1,5 +1,6 @@
 package com.example.demo.Controllers;
 import com.example.demo.BusinessLogic.EmotionCategoryBusinessLogicService;
+import com.example.demo.Domain.DTOs.EmotionCategoryDTO;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Domain.EmotionCategory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +43,8 @@ public class EmotionCategoryController {
         emotionCategoryBusinessLogicService.DeleteEmotionCategory(emotionCategoryID);
     }
 
+    @GetMapping("/RetrieveCategoriesForValence")
+    public EmotionCategoryDTO RetrieveEmotionCategoriesForValence(@RequestParam int valence){
+        return emotionCategoryBusinessLogicService.RetrieveEmotionCategoriesForValence(valence);
+    }
 }

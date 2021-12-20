@@ -1,6 +1,7 @@
 package com.example.demo.BusinessLogic;
 import com.example.demo.DataAccess.EmotionCategoryDataAccessService;
 import com.example.demo.DataAccess.EmotionDataAccessService;
+import com.example.demo.Domain.DTOs.EmotionCategoryDTO;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Domain.EmotionCategory;
 import com.example.demo.Interfaces.BusinessLogic.IEmotionCategoryBusinessLogicService;
@@ -45,5 +46,14 @@ public class EmotionCategoryBusinessLogicService implements IEmotionCategoryBusi
     @Override
     public void DeleteEmotionCategory(int id) {
         emotionCategoryDataAccessService.DeleteEmotionCategory(id);
+    }
+
+    @Override
+    public EmotionCategoryDTO RetrieveEmotionCategoriesForValence(int valence) {
+        if(valence != 1 && valence != 0 && valence != -1){
+            return new EmotionCategoryDTO(null, 1);
+        }
+        List<EmotionCategory> emotionCategoryList = emotionCategoryDataAccessService.RetrieveEmotionCategoriesForValence(valence);
+        return new EmotionCategoryDTO(emotionCategoryList, 0);
     }
 }
