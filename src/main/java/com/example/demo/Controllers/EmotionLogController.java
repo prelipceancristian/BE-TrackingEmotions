@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.BusinessLogic.EmotionLogBusinessLogicService;
+import com.example.demo.Domain.DTOs.EmotionLogsDTO;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Domain.EmotionLog;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +26,8 @@ public class EmotionLogController {
     }
 
     @GetMapping
-    public List<EmotionLog> RetrieveEmotionsLogs(@RequestParam int userID) {
-        return emotionLogBusinessLogicService.RetrieveEmotionLogsByUserID(userID);
+    public EmotionLogsDTO RetrieveEmotionsLogs(@RequestParam int userID, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int environmentID, @RequestParam int typeID) {
+        return emotionLogBusinessLogicService.RetrieveEmotionLogsByUserID(userID, startDate, endDate, environmentID, typeID);
     }
 
     @PostMapping

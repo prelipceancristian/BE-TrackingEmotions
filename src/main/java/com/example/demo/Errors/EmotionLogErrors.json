@@ -1,0 +1,5 @@
+{
+  "1" : "No emotion logs were found",
+  "2" : "The entered dates are not valid",
+  "3" : "The startDate cannot be greater than the endDate"
+}

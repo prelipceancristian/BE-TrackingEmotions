@@ -19,9 +19,23 @@ public class EmotionLogDataAccessService implements IEmotionLogDataAccessService
     }
 
     @Override
-    public List<EmotionLog> RetrieveEmotionLogsByUserID(int userID) {
-        String query = String.format("SELECT * FROM EmotionLog WHERE UserID = %s", userID);
-        List<EmotionLog> emotionLogs = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionLog.class));
+    public List<EmotionLog> RetrieveEmotionLogsByUserID(int userID, String startDate, String endDate, int environmentID, int typeID) {
+
+        StringBuilder str = new StringBuilder("SELECT * FROM EmotionLog");
+        if(typeID != -1){
+            str.append(" INNER JOIN Emotion on EmotionLog.EmotionID = Emotion.EmotionID");
+        }
+        String userQuery = String.format(" WHERE UserID = %s", userID);
+        str.append(userQuery);
+        if(!startDate.isEmpty() && !startDate.isEmpty()){
+            String dateQuery = String.format(" AND (Date BETWEEN '%s' AND '%s')", startDate, endDate);
+            str.append(dateQuery);
+        }
+        if(environmentID != -1){
+            String environmentQuery = String.format(" AND SocialEnvironmentID = %s", String.valueOf(environmentID));
+            str.append(environmentQuery);
+        }
+        List<EmotionLog> emotionLogs = jdbcTemplate.query(str.toString(), BeanPropertyRowMapper.newInstance(EmotionLog.class));
         return emotionLogs;
     }
 
