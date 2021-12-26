@@ -14,5 +14,9 @@ public interface IUserBusinessLogicService {
 
     void UpdateUser(int Userid, String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email);
 
+    User Login(String Username, String Password);
+
+    void LoginWithSocial(int UserId, String FirstName, String Email);
+
     void DeleteUser(int id);
 }

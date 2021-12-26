@@ -44,6 +44,20 @@ public class UserBusinessLogicService implements IUserBusinessLogicService{
     }
 
     @Override
+    public User Login(String Username, String Password) {
+        return UserDataAccessService.Login(Username, Password);
+    }
+
+    @Override
+    public void LoginWithSocial(int UserId, String FirstName, String Email) {
+        if(UserDataAccessService.SearchUser(UserId) != null){
+            return;
+        }
+
+        UserDataAccessService.CreateUserWithSocial(UserId, FirstName, Email);
+    }
+
+    @Override
     public void DeleteUser(int id) {
         UserDataAccessService.DeleteUser(id);
     }
