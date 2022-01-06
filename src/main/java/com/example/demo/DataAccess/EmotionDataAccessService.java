@@ -20,8 +20,13 @@ public class EmotionDataAccessService implements IEmotionDataAccessService {
     }
 
     @Override
-    public List<Emotion> RetrieveEmotions() {
+    public List<Emotion> RetrieveEmotions(int emotionCategoryID) {
         String query = "SELECT * FROM Emotion";
+        System.out.println(emotionCategoryID);
+        if(emotionCategoryID != -1)
+        {
+            query += String.format(" WHERE EmotionCategoryID = %s", String.valueOf(emotionCategoryID));
+        }
         List<Emotion> emotionList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(Emotion.class));
         return emotionList;
     }

@@ -64,7 +64,8 @@ public class EmotionCategoryDataAccessService implements IEmotionCategoryDataAcc
 
     @Override
     public List<EmotionCategory> RetrieveEmotionCategoriesForValence(int valence) {
-        String query = String.format("SELECT * FROM EmotionCategory where ValenceID = %s", valence);
+
+        String query = String.format("SELECT * FROM EmotionCategory where ValenceID = %s", String.valueOf(valence));
         List<EmotionCategory> emotionCategoryList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionCategory.class));
         return emotionCategoryList;
     }

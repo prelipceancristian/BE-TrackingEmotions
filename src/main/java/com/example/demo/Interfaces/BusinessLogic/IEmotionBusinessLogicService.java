@@ -6,7 +6,7 @@ import com.example.demo.Domain.Emotion;
 import java.util.List;
 
 public interface IEmotionBusinessLogicService {
-    EmotionDTO RetrieveEmotions();
+    EmotionDTO RetrieveEmotions(int emotionCategoryID);
 
     Emotion SearchEmotion(int id);
 

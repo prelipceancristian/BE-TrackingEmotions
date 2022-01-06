@@ -5,7 +5,7 @@ import com.example.demo.Domain.Emotion;
 import java.util.List;
 
 public interface IEmotionDataAccessService {
-    List<Emotion> RetrieveEmotions();
+    List<Emotion> RetrieveEmotions(int emotionCategoryID);
 
     Emotion SearchEmotion(int id);
 

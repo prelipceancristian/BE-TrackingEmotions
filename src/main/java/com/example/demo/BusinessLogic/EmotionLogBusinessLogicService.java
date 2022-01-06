@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -24,22 +25,23 @@ public class EmotionLogBusinessLogicService implements IEmotionLogBusinessLogicS
     }
 
     @Override
-    public EmotionLogsDTO RetrieveEmotionLogsByUserID(@RequestParam int userID, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int environmentID, @RequestParam int typeID) {
+    public EmotionLogsDTO   RetrieveEmotionLogsByUserID(@RequestParam int userID, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int environmentID, @RequestParam int typeID) {
         int errorCode = 0;
+        List<EmotionLog> result = new ArrayList<EmotionLog>();
         try {
             DateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
             sdf.parse(startDate);
             sdf.parse(endDate);
         } catch (ParseException exception){
-            return new EmotionLogsDTO(null, 2);
+            return new EmotionLogsDTO(result, 2);
         }
-        if(startDate.compareTo(endDate) < 0 ){
-            return new EmotionLogsDTO(null, 3);
+        if(startDate.compareTo(endDate) > 0 ){
+            return new EmotionLogsDTO(result, 3);
         }
-        List<EmotionLog> emotionLogs = emotionLogDataAccessService.RetrieveEmotionLogsByUserID(userID, startDate, endDate, environmentID, typeID);
-        if(emotionLogs.size() == 0)
-            return new EmotionLogsDTO(null, 1);
-        return new EmotionLogsDTO(emotionLogs, errorCode);
+        result = emotionLogDataAccessService.RetrieveEmotionLogsByUserID(userID, startDate, endDate, environmentID, typeID);
+        if(result.size() == 0)
+            return new EmotionLogsDTO(result, 1);
+        return new EmotionLogsDTO(result, errorCode);
     }
 
     @Override

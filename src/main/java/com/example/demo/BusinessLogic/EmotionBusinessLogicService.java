@@ -20,8 +20,8 @@ public class EmotionBusinessLogicService implements IEmotionBusinessLogicService
     }
 
     @Override
-    public EmotionDTO RetrieveEmotions() {
-        List<Emotion> emotionList = emotionDataAccessService.RetrieveEmotions();
+    public EmotionDTO RetrieveEmotions(int emotionCategoryID) {
+        List<Emotion> emotionList = emotionDataAccessService.RetrieveEmotions(emotionCategoryID);
         return new EmotionDTO(emotionList, 0);
     }
 

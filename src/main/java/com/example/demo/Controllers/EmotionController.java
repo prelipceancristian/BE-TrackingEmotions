@@ -24,9 +24,14 @@ public class EmotionController {
         return emotionBusinessLogicService.SearchEmotion(id);
     }
 
-    @GetMapping
+    @GetMapping()
     public EmotionDTO RetrieveEmotions() {
-        return emotionBusinessLogicService.RetrieveEmotions();
+        return emotionBusinessLogicService.RetrieveEmotions(-1);
+    }
+
+    @GetMapping("/RetrieveEmotionsForCategory")
+    public EmotionDTO RetrieveEmotionsForCategory(@RequestParam int emotionCategoryID) {
+        return emotionBusinessLogicService.RetrieveEmotions(emotionCategoryID);
     }
 
     @PostMapping

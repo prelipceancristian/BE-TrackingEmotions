@@ -8,6 +8,7 @@ import com.example.demo.Interfaces.BusinessLogic.IEmotionCategoryBusinessLogicSe
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -50,10 +51,11 @@ public class EmotionCategoryBusinessLogicService implements IEmotionCategoryBusi
 
     @Override
     public EmotionCategoryDTO RetrieveEmotionCategoriesForValence(int valence) {
+        List<EmotionCategory> emotionCategoryList = new ArrayList<>();
         if(valence != 1 && valence != 0 && valence != -1){
-            return new EmotionCategoryDTO(null, 1);
+            return new EmotionCategoryDTO(emotionCategoryList, 1);
         }
-        List<EmotionCategory> emotionCategoryList = emotionCategoryDataAccessService.RetrieveEmotionCategoriesForValence(valence);
+        emotionCategoryList = emotionCategoryDataAccessService.RetrieveEmotionCategoriesForValence(valence);
         return new EmotionCategoryDTO(emotionCategoryList, 0);
     }
 }
