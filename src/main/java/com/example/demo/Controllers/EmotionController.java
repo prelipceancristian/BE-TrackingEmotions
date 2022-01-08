@@ -2,6 +2,7 @@ package com.example.demo.Controllers;
 
 import com.example.demo.BusinessLogic.EmotionBusinessLogicService;
 import com.example.demo.Domain.DTOs.EmotionDTO;
+import com.example.demo.Domain.DTOs.EmotionDescriptionDTO;
 import com.example.demo.Domain.Emotion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,12 +26,12 @@ public class EmotionController {
     }
 
     @GetMapping()
-    public EmotionDTO RetrieveEmotions() {
+    public EmotionDescriptionDTO RetrieveEmotions() {
         return emotionBusinessLogicService.RetrieveEmotions(-1);
     }
 
     @GetMapping("/RetrieveEmotionsForCategory")
-    public EmotionDTO RetrieveEmotionsForCategory(@RequestParam int emotionCategoryID) {
+    public EmotionDescriptionDTO RetrieveEmotionsForCategory(@RequestParam int emotionCategoryID) {
         return emotionBusinessLogicService.RetrieveEmotions(emotionCategoryID);
     }
 

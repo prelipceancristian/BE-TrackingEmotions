@@ -1,12 +1,13 @@
 package com.example.demo.Interfaces.BusinessLogic;
 
 import com.example.demo.Domain.DTOs.EmotionDTO;
+import com.example.demo.Domain.DTOs.EmotionDescriptionDTO;
 import com.example.demo.Domain.Emotion;
 
 import java.util.List;
 
 public interface IEmotionBusinessLogicService {
-    EmotionDTO RetrieveEmotions(int emotionCategoryID);
+    EmotionDescriptionDTO RetrieveEmotions(int emotionCategoryID);
 
     Emotion SearchEmotion(int id);
 
