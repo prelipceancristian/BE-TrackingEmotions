@@ -4,6 +4,8 @@ import com.example.demo.BusinessLogic.UserBusinessLogicService;
 import com.example.demo.Domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -38,7 +40,7 @@ public class UserController {
     }
 
     @PostMapping("/socialLogin")
-    public void SocialLogin(@RequestParam int UserId, @RequestParam String FirstName, @RequestParam String Email) {
+    public void SocialLogin(@RequestParam BigInteger UserId, @RequestParam String FirstName, @RequestParam String Email) {
         UserBusinessLogicService.LoginWithSocial(UserId, FirstName, Email);
     }
 

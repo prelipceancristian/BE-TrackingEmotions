@@ -2,6 +2,7 @@ package com.example.demo.Interfaces.BusinessLogic;
 
 import com.example.demo.Domain.User;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface IUserBusinessLogicService {
 
     User Login(String Username, String Password);
 
-    void LoginWithSocial(int UserId, String FirstName, String Email);
+    void LoginWithSocial(BigInteger UserId, String FirstName, String Email);
 
     void DeleteUser(int id);
 }

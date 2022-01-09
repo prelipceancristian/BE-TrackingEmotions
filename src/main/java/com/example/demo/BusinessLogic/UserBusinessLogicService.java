@@ -7,6 +7,7 @@ import com.example.demo.Interfaces.BusinessLogic.IUserBusinessLogicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.List;
 
@@ -49,8 +50,11 @@ public class UserBusinessLogicService implements IUserBusinessLogicService{
     }
 
     @Override
-    public void LoginWithSocial(int UserId, String FirstName, String Email) {
-        if(UserDataAccessService.SearchUser(UserId) != null){
+    public void LoginWithSocial(BigInteger UserIdBigInt, String FirstName, String Email) {
+        int UserId = UserIdBigInt.intValue();
+        User user = UserDataAccessService.SearchUser(UserId);
+
+        if(user != null){
             return;
         }
 

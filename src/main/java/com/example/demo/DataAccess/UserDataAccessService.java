@@ -36,7 +36,7 @@ public class UserDataAccessService implements IUserDataAccessService {
 
     @Override
     public void CreateUser(String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
-        String query = String.format("INSERT INTO [dbo].[User] ([FirstName], [LastName], [BirthDate], [Username], [Password], [Gender], [Email]) VALUES ('%s', %s, %s, '%s', %s, %s, %s)",
+        String query = String.format("INSERT INTO [dbo].[User] ([FirstName], [LastName], [BirthDate], [Username], [Password], [Gender], [Email]) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
                 FirstName,
                 LastName,
                 BirthDate,
