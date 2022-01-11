@@ -14,5 +14,9 @@ public interface IUserDataAccessService {
 
     void UpdateUser(int UserID, String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email);
 
+    User Login(String Username, String Password);
+
+    void CreateUserWithSocial(int UserId, String FirstName, String Email);
+
     void DeleteUser(int id);
 }

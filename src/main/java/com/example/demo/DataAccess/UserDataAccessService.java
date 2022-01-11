@@ -1,4 +1,5 @@
 package com.example.demo.DataAccess;
+
 import com.example.demo.Domain.User;
 import com.example.demo.Interfaces.DataAccess.IUserDataAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 @Repository
-public class UserDataAccessService implements IUserDataAccessService{
+public class UserDataAccessService implements IUserDataAccessService {
 
     private JdbcTemplate jdbcTemplate;
 
@@ -35,7 +36,7 @@ public class UserDataAccessService implements IUserDataAccessService{
 
     @Override
     public void CreateUser(String FirstName, String LastName, String BirthDate, String Username, String Password, String Gender, String Email) {
-        String query = String.format("INSERT INTO [dbo].[User] ([FirstName], [LastName], [BirthDate], [Username], [Password], [Gender], [Email]) VALUES ('%s', %s, %s, '%s', %s, %s, %s)",
+        String query = String.format("INSERT INTO [dbo].[User] ([FirstName], [LastName], [BirthDate], [Username], [Password], [Gender], [Email]) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s')",
                 FirstName,
                 LastName,
                 BirthDate,
@@ -63,6 +64,22 @@ public class UserDataAccessService implements IUserDataAccessService{
                 Username,
                 Password,
                 Gender,
+                Email);
+        jdbcTemplate.update(query);
+    }
+
+    @Override
+    public User Login(String Username, String Password) {
+        String query = "SELECT * FROM [dbo].[User] WHERE Username = '" + Username + "' AND Password = '" + Password + "'";
+        User user = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(User.class)).stream().findFirst().orElse(null);
+        return user;
+    }
+
+    @Override
+    public void CreateUserWithSocial(int UserId, String FirstName, String Email) {
+        String query = String.format("SET IDENTITY_INSERT [dbo].[User] ON; INSERT INTO [dbo].[User] ([UserId], [FirstName], [Email]) VALUES ('%d', '%s', '%s'); SET IDENTITY_INSERT [dbo].[User] OFF",
+                UserId,
+                FirstName,
                 Email);
         jdbcTemplate.update(query);
     }
