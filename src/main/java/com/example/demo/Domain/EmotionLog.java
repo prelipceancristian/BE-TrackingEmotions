@@ -4,18 +4,24 @@ public class EmotionLog {
     int EmotionLogID;
     int EmotionID;
     int UserID;
-    int SocialEnvironmentID;
+    int SocialEnvironmentID1;
+    int SocialEnvironmentID2;
     String Date;
 
-    @Override
-    public String toString() {
-        return "EmotionLog{" +
-                "EmotionLogID=" + EmotionLogID +
-                ", EmotionID=" + EmotionID +
-                ", UserID=" + UserID +
-                ", SocialEnvironmentID=" + SocialEnvironmentID +
-                ", Date='" + Date + '\'' +
-                '}';
+    public int getSocialEnvironmentID1() {
+        return SocialEnvironmentID1;
+    }
+
+    public void setSocialEnvironmentID1(int socialEnvironmentID1) {
+        SocialEnvironmentID1 = socialEnvironmentID1;
+    }
+
+    public int getSocialEnvironmentID2() {
+        return SocialEnvironmentID2;
+    }
+
+    public void setSocialEnvironmentID2(int socialEnvironmentID2) {
+        SocialEnvironmentID2 = socialEnvironmentID2;
     }
 
     public int getEmotionLogID() {
@@ -40,14 +46,6 @@ public class EmotionLog {
 
     public void setUserID(int userID) {
         UserID = userID;
-    }
-
-    public int getSocialEnvironmentID() {
-        return SocialEnvironmentID;
-    }
-
-    public void setSocialEnvironmentID(int socialEnvironmentID) {
-        SocialEnvironmentID = socialEnvironmentID;
     }
 
     public String getDate() {

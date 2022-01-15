@@ -4,7 +4,7 @@ public class EmotionCategory {
     int EmotionCategoryID;
     String Name;
     int ValenceID;
-    int DescriptionID;
+    Integer DescriptionID;
 
     @Override
     public String toString() {
@@ -40,11 +40,11 @@ public class EmotionCategory {
         ValenceID = valenceID;
     }
 
-    public int getDescriptionID() {
+    public Integer getDescriptionID() {
         return DescriptionID;
     }
 
-    public void setDescriptionID(int descriptionID) {
+    public void setDescriptionID(Integer descriptionID) {
         DescriptionID = descriptionID;
     }
 }

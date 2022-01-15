@@ -24,6 +24,16 @@ public class SocialEnvironmentBusinessLogicService implements ISocialEnvironment
     }
 
     @Override
+    public List<SocialEnvironment> RetrieveLocations() {
+        return socialEnvironmentDataAccessService.RetrieveLocations();
+    }
+
+    @Override
+    public List<SocialEnvironment> RetrievePeople() {
+        return socialEnvironmentDataAccessService.RetrievePeople();
+    }
+
+    @Override
     public SocialEnvironment SearchSocialEnvironment(int SocialEnvironmentID) {
         return socialEnvironmentDataAccessService.SearchSocialEnvironment(SocialEnvironmentID);
     }
