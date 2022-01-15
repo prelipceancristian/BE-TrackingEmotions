@@ -1,6 +1,7 @@
 package com.example.demo.Controllers;
 
 import com.example.demo.BusinessLogic.EmotionBusinessLogicService;
+import com.example.demo.Domain.DTOs.EmotionDescriptionDTO;
 import com.example.demo.Domain.Emotion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

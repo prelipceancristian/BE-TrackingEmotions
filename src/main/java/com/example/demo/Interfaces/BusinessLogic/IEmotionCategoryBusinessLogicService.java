@@ -17,4 +17,6 @@ public interface IEmotionCategoryBusinessLogicService {
     void DeleteEmotionCategory(int id);
 
     EmotionCategoryDTO RetrieveEmotionCategoriesForValence(int valence);
+
+
 }

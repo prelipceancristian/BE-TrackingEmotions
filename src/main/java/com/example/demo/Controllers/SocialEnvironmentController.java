@@ -24,6 +24,16 @@ public class SocialEnvironmentController {
         return socialEnvironmentBusinessLogicService.SearchSocialEnvironment(id);
     }
 
+    @GetMapping("/locations")
+    public List<SocialEnvironment> RetrieveLocations() {
+        return socialEnvironmentBusinessLogicService.RetrieveLocations();
+    }
+
+    @GetMapping("/people")
+    public List<SocialEnvironment> RetrievePeople() {
+        return socialEnvironmentBusinessLogicService.RetrievePeople();
+    }
+
     @GetMapping
     public List<SocialEnvironment> RetrieveSocialEnvironment() {
         return socialEnvironmentBusinessLogicService.RetrieveSocialEnvironments();

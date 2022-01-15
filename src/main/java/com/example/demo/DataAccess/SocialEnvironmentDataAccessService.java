@@ -26,11 +26,27 @@ public class SocialEnvironmentDataAccessService implements ISocialEnvironmentDat
         return socialEnvironments;
     }
 
+
+
     @Override
     public SocialEnvironment SearchSocialEnvironment(int SocialEnvironmentID) {
         String query = "SELECT * FROM SocialEnvironment WHERE SocialEnvironmentID = " + String.valueOf(SocialEnvironmentID);
         SocialEnvironment socialEnvironment = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(SocialEnvironment.class)).stream().findFirst().orElse(null);
         return socialEnvironment;
+    }
+
+    @Override
+    public List<SocialEnvironment> RetrieveLocations() {
+        String query = "SELECT * FROM SocialEnvironment Where IsLocation = 1";
+        List<SocialEnvironment> socialEnvironments = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(SocialEnvironment.class));
+        return socialEnvironments;
+    }
+
+    @Override
+    public List<SocialEnvironment> RetrievePeople() {
+        String query = "SELECT * FROM SocialEnvironment Where IsLocation = 0";
+        List<SocialEnvironment> socialEnvironments = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(SocialEnvironment.class));
+        return socialEnvironments;
     }
 
     @Override
