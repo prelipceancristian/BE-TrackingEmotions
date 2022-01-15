@@ -1,8 +1,11 @@
 package com.example.demo.Domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Date;
+
 public class User {
 
     private int UserId;
@@ -15,24 +18,71 @@ public class User {
     private String Email;
 
 
-    public int getUserId() { return UserId; } //getter
-    public String getFirstName() { return FirstName; }
-    public String getLastName() { return LastName; }
-    public Date getBirthDate() { return BirthDate; }
-    public String getUsername(){ return Username; }
-    public String getPassword(){ return Password; }
-    public String getGender(){ return Gender; }
-    public String getEmail(){ return Email; }
+    public int getUserId() {
+        return UserId;
+    } //getter
+
+    public String getFirstName() {
+        return FirstName;
+    }
+
+    public String getLastName() {
+        return LastName;
+    }
+
+    public Date getBirthDate() {
+        return BirthDate;
+    }
+
+    public String getUsername() {
+        return Username;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return Password;
+    }
+
+    public String getGender() {
+        return Gender;
+    }
+
+    public String getEmail() {
+        return Email;
+    }
 
 
-    public void setUserId(int UserId) { this.UserId = UserId; } //setter
-    public void setLastName(String LastName) { this.LastName = LastName; }
-    public void setFirstName(String FirstName) { this.FirstName = FirstName; }
-    public void setEmail(String Email) { this.Email = Email; }
-    public void setBirthDate(Date BirthDate) { this.BirthDate = BirthDate; }
-    public void setUsername(String Username) { this.Username = Username; }
-    public void setPassword(String Password) { this.Password = Password; }
-    public void setGender(String Gender) { this.Gender = Gender; }
+    public void setUserId(int UserId) {
+        this.UserId = UserId;
+    } //setter
+
+    public void setLastName(String LastName) {
+        this.LastName = LastName;
+    }
+
+    public void setFirstName(String FirstName) {
+        this.FirstName = FirstName;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public void setBirthDate(Date BirthDate) {
+        this.BirthDate = BirthDate;
+    }
+
+    public void setUsername(String Username) {
+        this.Username = Username;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public void setGender(String Gender) {
+        this.Gender = Gender;
+    }
 
     @Override
     public String toString() {
@@ -49,8 +99,7 @@ public class User {
     }
 
     //hash function
-    public static String getMd5(String input)
-    {
+    public static String getMd5(String input) {
         try {
 
             // Static getInstance method is called with hashing MD5
