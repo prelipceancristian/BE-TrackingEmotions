@@ -1,12 +1,14 @@
 package com.example.demo.BusinessLogic;
 import com.example.demo.DataAccess.EmotionCategoryDataAccessService;
 import com.example.demo.DataAccess.EmotionDataAccessService;
+import com.example.demo.Domain.DTOs.EmotionCategoryDTO;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Domain.EmotionCategory;
 import com.example.demo.Interfaces.BusinessLogic.IEmotionCategoryBusinessLogicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,5 +47,15 @@ public class EmotionCategoryBusinessLogicService implements IEmotionCategoryBusi
     @Override
     public void DeleteEmotionCategory(int id) {
         emotionCategoryDataAccessService.DeleteEmotionCategory(id);
+    }
+
+    @Override
+    public EmotionCategoryDTO RetrieveEmotionCategoriesForValence(int valence) {
+        List<EmotionCategory> emotionCategoryList = new ArrayList<>();
+        if(valence != 1 && valence != 0 && valence != -1){
+            return new EmotionCategoryDTO(emotionCategoryList, 1);
+        }
+        emotionCategoryList = emotionCategoryDataAccessService.RetrieveEmotionCategoriesForValence(valence);
+        return new EmotionCategoryDTO(emotionCategoryList, 0);
     }
 }

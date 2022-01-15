@@ -61,4 +61,12 @@ public class EmotionCategoryDataAccessService implements IEmotionCategoryDataAcc
         String query = String.format("DELETE FROM Category WHERE EmotionCategoryID = %s", id);
         jdbcTemplate.update(query);
     }
+
+    @Override
+    public List<EmotionCategory> RetrieveEmotionCategoriesForValence(int valence) {
+
+        String query = String.format("SELECT * FROM EmotionCategory where ValenceID = %s", String.valueOf(valence));
+        List<EmotionCategory> emotionCategoryList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionCategory.class));
+        return emotionCategoryList;
+    }
 }

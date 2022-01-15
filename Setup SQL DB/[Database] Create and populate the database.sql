@@ -56,7 +56,8 @@ CREATE TABLE [dbo].[EmotionLog](
 	[EmotionLogID] [bigint] IDENTITY(1,1) NOT NULL,
 	[EmotionID] [bigint] NULL,
 	[UserID] [bigint] NULL,
-	[SocialEnvironmentID] [bigint] NULL,
+	[SocialEnvironmentID1] [bigint] NULL,
+	[SocialEnvironmentID2] [bigint] NULL,
 	[Date] [date] NULL,
 PRIMARY KEY CLUSTERED 
 (
@@ -578,7 +579,10 @@ REFERENCES [dbo].[Emotion] ([EmotionID])
 GO
 ALTER TABLE [dbo].[EmotionLog] CHECK CONSTRAINT [FK_EmotionLog.EmotionID]
 GO
-ALTER TABLE [dbo].[EmotionLog]  WITH CHECK ADD  CONSTRAINT [FK_EmotionLog.SocialEnvironmentID] FOREIGN KEY([SocialEnvironmentID])
+ALTER TABLE [dbo].[EmotionLog]  WITH CHECK ADD  CONSTRAINT [FK_EmotionLog.SocialEnvironmentID1] FOREIGN KEY([SocialEnvironmentID1])
+REFERENCES [dbo].[SocialEnvironment] ([SocialEnvironmentID])
+GO
+ALTER TABLE [dbo].[EmotionLog]  WITH CHECK ADD  CONSTRAINT [FK_EmotionLog.SocialEnvironmentID2] FOREIGN KEY([SocialEnvironmentID2])
 REFERENCES [dbo].[SocialEnvironment] ([SocialEnvironmentID])
 GO
 ALTER TABLE [dbo].[EmotionLog] CHECK CONSTRAINT [FK_EmotionLog.SocialEnvironmentID]

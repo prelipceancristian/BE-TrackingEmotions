@@ -1,11 +1,12 @@
 package com.example.demo.Interfaces.DataAccess;
 
+import com.example.demo.Domain.DTOs.EmotionWithDescription;
 import com.example.demo.Domain.Emotion;
 
 import java.util.List;
 
 public interface IEmotionDataAccessService {
-    List<Emotion> RetrieveEmotions();
+    List<EmotionWithDescription> RetrieveEmotions(int emotionCategoryID);
 
     Emotion SearchEmotion(int id);
 
