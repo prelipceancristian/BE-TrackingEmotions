@@ -6,7 +6,10 @@ import com.example.demo.Controllers.EmotionCategoryController;
 import com.example.demo.Controllers.EmotionLogController;
 import com.example.demo.DataAccess.EmotionCategoryDataAccessService;
 import com.example.demo.DataAccess.EmotionLogDataAccessService;
+import com.example.demo.Domain.DTOs.EmotionLogWithDescriptions;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 public class Tester {
     public EmotionLogDataAccessService emotionLogDataAccessService;
@@ -26,11 +29,17 @@ public class Tester {
         emotionCategoryDataAccessService = new EmotionCategoryDataAccessService(jdbcTemplate);
         emotionCategoryBusinessLogicService = new EmotionCategoryBusinessLogicService(emotionCategoryDataAccessService);
         emotionCategoryController = new EmotionCategoryController(emotionCategoryBusinessLogicService);
+
+
     }
 
     public void test(){
         //emotionLogController.RetrieveEmotionsLogs(1, "2020-10-10", "2021-11-11", 1, 1);
-        emotionCategoryController.RetrieveEmotionCategoriesForValence(2);
+        //emotionCategoryController.RetrieveEmotionCategoriesForValence(2);
+        List<EmotionLogWithDescriptions> logs = emotionLogDataAccessService.RetrieveEmotionLogsDescriptors(15);
+        for(EmotionLogWithDescriptions log: logs){
+            System.out.print(log);
+        }
     }
 
     public static void main(String[] args){

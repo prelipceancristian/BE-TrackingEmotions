@@ -1,6 +1,7 @@
 package com.example.demo.BusinessLogic;
 
 import com.example.demo.DataAccess.EmotionLogDataAccessService;
+import com.example.demo.Domain.DTOs.EmotionLogWithDescriptions;
 import com.example.demo.Domain.DTOs.EmotionLogsDTO;
 import com.example.demo.Domain.EmotionLog;
 import com.example.demo.Interfaces.BusinessLogic.IEmotionLogBusinessLogicService;
@@ -25,20 +26,22 @@ public class EmotionLogBusinessLogicService implements IEmotionLogBusinessLogicS
     }
 
     @Override
-    public EmotionLogsDTO   RetrieveEmotionLogsByUserID(@RequestParam int userID, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int environmentID, @RequestParam int typeID) {
+    public EmotionLogsDTO   RetrieveEmotionLogsByUserID(@RequestParam int userID, @RequestParam String startDate, @RequestParam String endDate, @RequestParam int environmentID1, @RequestParam int environmentID2, @RequestParam int typeID) {
         int errorCode = 0;
         List<EmotionLog> result = new ArrayList<EmotionLog>();
-        try {
-            DateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
-            sdf.parse(startDate);
-            sdf.parse(endDate);
-        } catch (ParseException exception){
-            return new EmotionLogsDTO(result, 2);
+        if(!startDate.isEmpty() && !endDate.isEmpty()){
+            try {
+                DateFormat sdf = new SimpleDateFormat("YYYY-MM-DD");
+                sdf.parse(startDate);
+                sdf.parse(endDate);
+            } catch (ParseException exception){
+                return new EmotionLogsDTO(result, 2);
+            }
+            if(startDate.compareTo(endDate) > 0 ){
+                return new EmotionLogsDTO(result, 3);
+            }
         }
-        if(startDate.compareTo(endDate) > 0 ){
-            return new EmotionLogsDTO(result, 3);
-        }
-        result = emotionLogDataAccessService.RetrieveEmotionLogsByUserID(userID, startDate, endDate, environmentID, typeID);
+        result = emotionLogDataAccessService.RetrieveEmotionLogsByUserID(userID, startDate, endDate, environmentID1, environmentID2, typeID);
         if(result.size() == 0)
             return new EmotionLogsDTO(result, 1);
         return new EmotionLogsDTO(result, errorCode);
@@ -55,9 +58,9 @@ public class EmotionLogBusinessLogicService implements IEmotionLogBusinessLogicS
     }
 
     @Override
-    public void CreateEmotionLog(int emotionID, int userID, int socialEnvironmentID, String date) {
+    public void CreateEmotionLog(int emotionID, int userID, int socialEnvironmentID1, int socialEnvironmentID2, String date) {
         //TODO: format date
-        emotionLogDataAccessService.CreateEmotionLog(emotionID, userID, socialEnvironmentID, date);
+        emotionLogDataAccessService.CreateEmotionLog(emotionID, userID, socialEnvironmentID1, socialEnvironmentID2, date);
     }
 
     @Override
@@ -76,6 +79,11 @@ public class EmotionLogBusinessLogicService implements IEmotionLogBusinessLogicS
             //throw error
         }
         emotionLogDataAccessService.DeleteEmotionLog(emotionLogID);
+    }
+
+    @Override
+    public List<EmotionLogWithDescriptions> RetrieveEmotionLogsDescriptors(int userID) {
+        return emotionLogDataAccessService.RetrieveEmotionLogsDescriptors(userID);
     }
 
     private boolean HasUserPermission(int emotionLogID, int userID)
