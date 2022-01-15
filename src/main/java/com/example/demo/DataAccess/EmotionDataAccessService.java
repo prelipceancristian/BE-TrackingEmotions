@@ -1,5 +1,6 @@
 package com.example.demo.DataAccess;
 
+import com.example.demo.Domain.DTOs.EmotionWithDescription;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Interfaces.DataAccess.IEmotionDataAccessService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,13 @@ public class EmotionDataAccessService implements IEmotionDataAccessService {
     }
 
     @Override
-    public List<Emotion> RetrieveEmotions() {
-        String query = "SELECT * FROM Emotion";
-        List<Emotion> emotionList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(Emotion.class));
+    public List<EmotionWithDescription> RetrieveEmotions(int emotionCategoryID) {
+        String query = "SELECT * FROM Emotion INNER JOIN [Description] on Emotion.DescriptionID = [Description].DescriptionID ";
+        if(emotionCategoryID != -1)
+        {
+            query += String.format(" WHERE EmotionCategoryID = %s", String.valueOf(emotionCategoryID));
+        }
+        List<EmotionWithDescription> emotionList = jdbcTemplate.query(query, BeanPropertyRowMapper.newInstance(EmotionWithDescription.class));
         return emotionList;
     }
 

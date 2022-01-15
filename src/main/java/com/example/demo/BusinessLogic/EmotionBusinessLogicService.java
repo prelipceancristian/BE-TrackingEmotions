@@ -1,6 +1,9 @@
 package com.example.demo.BusinessLogic;
 
+import com.example.demo.DataAccess.DescriptionDataAccessService;
 import com.example.demo.DataAccess.EmotionDataAccessService;
+import com.example.demo.Domain.DTOs.EmotionDescriptionDTO;
+import com.example.demo.Domain.DTOs.EmotionWithDescription;
 import com.example.demo.Domain.Emotion;
 import com.example.demo.Interfaces.BusinessLogic.IEmotionBusinessLogicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,16 +15,18 @@ import java.util.List;
 public class EmotionBusinessLogicService implements IEmotionBusinessLogicService {
 
     private EmotionDataAccessService emotionDataAccessService;
+    private DescriptionDataAccessService descriptionDataAccessService;
 
     @Autowired
-    public EmotionBusinessLogicService(EmotionDataAccessService emotionDataAccessService) {
+    public EmotionBusinessLogicService(EmotionDataAccessService emotionDataAccessService, DescriptionDataAccessService descriptionDataAccessService) {
         this.emotionDataAccessService = emotionDataAccessService;
+        this.descriptionDataAccessService = descriptionDataAccessService;
     }
 
     @Override
-    public List<Emotion> RetrieveEmotions() {
-        List<Emotion> emotionList = emotionDataAccessService.RetrieveEmotions();
-        return emotionList;
+    public EmotionDescriptionDTO RetrieveEmotions(int emotionCategoryID) {
+        List<EmotionWithDescription> emotionWithDescriptions = emotionDataAccessService.RetrieveEmotions(emotionCategoryID);
+        return new EmotionDescriptionDTO(emotionWithDescriptions, 0);
     }
 
     @Override
